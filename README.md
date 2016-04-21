@@ -106,7 +106,7 @@ fm.COVtr<- BGLR(y=yNA, ETA=ETA.COV, response_type='ordinal')
   # Find probability of survival for the testing set
 pred <-fm.COVtr$probs[tst,2]
   # Estimate AUC
-AUC_train<-auc(y[-tst],fm.COVtr$yHat[-tst])
+AUC_train<-auc(y[!tst],fm.COVtr$yHat[!tst])
 AUC_test<-auc(y[tst], pred)
 #For the first individual, area under the standard normal curve (CDF) of estimated y from full model:
 pnorm(fm.COVtr$yHat[1])
